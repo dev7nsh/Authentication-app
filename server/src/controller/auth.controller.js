@@ -1,0 +1,49 @@
+import express from "express"
+import {User} from "../model/User.js"
+import bcrypt from "bcryptjs"
+
+
+export const signup = async(req,res) => {
+
+    const {firstname , email , password} = req.body;
+
+    try {
+
+        if(password.length<6){
+            return res.status(400).json({message: "incoor=ect password length -backend"});
+        }
+
+        const user = await User.findOne({email});
+
+        if(user){
+            return res.status(400).json({message: "user already exist - backend"})
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        const hasspass = await bcrypt.hash(password,salt);
+
+        const NewUser = new User({
+            firstname,
+            email,
+            password : hasspass,
+        })
+
+        
+            await NewUser.save()
+
+            res.status(201).json({
+                name: NewUser.firstname,
+                email: NewUser.email
+            });
+        
+
+
+
+        
+    } catch (error) {
+         console.log("Error in signup controller", error.message);
+    res.status(500).json({ message: "Internal Server Error --server" });
+        
+    }
+    
+}
