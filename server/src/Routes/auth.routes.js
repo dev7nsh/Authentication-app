@@ -1,5 +1,5 @@
 import express from "express"
-import { signup } from "../controller/auth.controller.js"
+import { login, signup } from "../controller/auth.controller.js"
 
 
 
@@ -10,5 +10,6 @@ router.get("/" , (req ,res) => {
 })
 
 router.post("/signup" , signup)
+router.post("/login" , login)
 
 export default router;

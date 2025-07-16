@@ -36,10 +36,6 @@ export const signup = async(req,res) => {
                 email: NewUser.email
             });
         
-
-
-
-        
     } catch (error) {
          console.log("Error in signup controller", error.message);
     res.status(500).json({ message: "Internal Server Error --server" });
@@ -47,3 +43,30 @@ export const signup = async(req,res) => {
     }
     
 }
+
+export const login = async(req,res) => {
+    const {email , password} = req.body;
+
+    try {
+        
+        const user = await User.findOne({email});
+
+        if(!user){
+            return res.status(401).json({message : "user is not rigester yet -- server"})
+        }
+
+       const  CheckPass = await bcrypt.compare(password, user.password)  ;
+
+       if(!CheckPass){
+        return res.status(401).json({message : "user is not rigester yet --- server"})
+       }
+
+       res.status(201).json({
+        email : user.email,
+        userid : user._id
+       })
+        
+    } catch (error) {
+        
+    }
+    }
