@@ -1,6 +1,31 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
+/* @import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap'); */
+
+
 body{
   background: #090909;
 }
+
+
+
+.myfont {
+  font-family: 'Jersey 10';
+}
+
+/* @font-face {
+  font-family: 'Bitcount';
+  src: url("./font/Bitcount-VariableFont_CRSV,ELSH,ELXP,slnt,wght.woff2") format('woff2');
+  font-weight: 0 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'jersey 10';
+  src: url("./font/Jersey10-Regular.woff2") format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+} */

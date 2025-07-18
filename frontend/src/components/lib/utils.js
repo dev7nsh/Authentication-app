@@ -1,4 +1,5 @@
-import { clsx } from "clsx";
+
+import {  clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 // Utility function to merge class names with Tailwind
 export function cn(...inputs) {
@@ -58,3 +59,4 @@ export function throttle(func, limit) {
         }
     };
 }
+
